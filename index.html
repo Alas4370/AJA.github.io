@@ -21,10 +21,104 @@
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H28DTGD5BF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-H28DTGD5BF');
+  </script>
+
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Typed.js   -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    var options = {
+      stringsElement: '#typed-element',
+      typeSpeed: 50, // Speed of typing
+      backSpeed: 50, // Speed of deleting
+      backDelay: 700, // Delay before starting to delete
+      startDelay: 500, // Delay before starting to type
+      loop: true, // Whether to loop the animation
+      showCursor: true, // Whether to show the cursor
+    };
+
+    var typed = new Typed('#typed-element', options);
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const navLinks = document.querySelectorAll('#navmenu a');
+      const sections = document.querySelectorAll('section');
+
+      function setActiveLink() {
+        let index = sections.length;
+
+        while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
+
+        navLinks.forEach((link) => link.classList.remove('active'));
+        navLinks[index].classList.add('active');
+      }
+
+      setActiveLink(); // Set active link on page load
+
+      window.addEventListener('scroll', setActiveLink);
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        navLinks.forEach(link => link.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+  <!-- Print -->
+  <script>
+    function printSections() {
+      // Get the content from the About, Skills, and Resume sections
+      window.print(); // Directly use the browser's print dialog
+    }
+  </script>
+
+  <!-- Download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+  <script>
+    document.getElementById('download-pdf').addEventListener('click', function() {
+      const sections = ['about', 'skills', 'resume'];
+      let elements = sections.map(id => document.getElementById(id));
+
+      // Check if elements exist
+      if (elements.some(el => el === null)) {
+        console.error('One or more sections not found');
+        return;
+      }
+
+      let pdfContent = document.createElement('div');
+      
+      elements.forEach(el => {
+        if (el) {
+          pdfContent.appendChild(el.cloneNode(true));
+        }
+      });
+
+      // Use html2pdf to generate the PDF
+      html2pdf().from(pdfContent).save('resume.pdf').then(() => {
+        console.log('PDF downloaded successfully');
+      }).catch(error => {
+        console.error('Error generating PDF:', error);
+      });
+    });
+  </script>
+
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -51,25 +145,20 @@
     </a>
 
     <div class="social-links text-center">
+      <!-- <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a> -->
       <a href="https://www.facebook.com/arjohnjude.alagao" target="_blank" class="facebook"><i class="bi bi-facebook"></i></a>
       <a href="https://www.instagram.com/aj_alas4370/" target="_blank" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="https://www.linkedin.com/in/arjohn-jude-alagao" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
-      <!-- <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a> -->
       <!-- <a href="#" class="google-plus"><i class="bi bi-skype"></i></a> -->
+      <a href="https://www.linkedin.com/in/arjohn-jude-alagao" target="_blank" class="linkedin"><i class="bi bi-linkedin"></i></a>
     </div>
 
     <nav id="navmenu" class="navmenu">
       <ul>
-        <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li>
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#skills"><i class="bi bi-bar-chart navicon"></i> Skills</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li>
-
-        <!-- If you want to add dropdown -->
-        <!--<li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+        <li><a href="#home" class="active"><i class="bi bi-house navicon"></i> Home </a></li>
+        <li><a href="#about"><i class="bi bi-person-fill navicon"></i> About </a></li>
+        <li><a href="#skills"><i class="bi bi-bar-chart-fill navicon"></i> Skills </a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text-fill navicon"></i> Resume </a></li>
+        <!--<li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
           <ul>
             <li><a href="#">Dropdown 1</a></li>
             <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -86,24 +175,31 @@
             <li><a href="#">Dropdown 4</a></li>
           </ul>
         </li>-->
+        <li><a href="#contact"><i class="bi bi-envelope-fill navicon"></i> Contact </a></li>
       </ul>
     </nav>
+
+    <!-- <button onclick="printSections()" class="btn btn-outline-light">Print</button>
+    <br>
+    <button id="download-pdf" class="btn btn-outline-light">Download PDF</button> -->
+
 
   </header>
 
   <main class="main">
 
-    <!-- Hero Section -->
-    <section id="hero" class="hero section dark-background">
+    <!-- home Section -->
+    <section id="home" class="hero section dark-background">
 
       <img src="assets/img/bground.jpg" alt="" data-aos="fade-in" class="">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
         <h2>Arjohn Jude Alagao</h2>
-        <p>I'm a <span class="typed" data-typed-items="Designer, Developer, Freelancer">Designer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
+        <p>I'm a <span id="typed-element" class="typed" data-typed-items="Developer, Freelancer, Designer, Programmer">Developer</span><span class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
       </div>
 
-    </section><!-- /Hero Section -->
+    </section>
+    <!-- /home Section -->
 
     <!-- About Section -->
     <section id="about" class="about section">
@@ -111,7 +207,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>About</h2>
-        <p>I am experienced in web development especially using a Laravel Framework to provide a robust synopsis for high level overviews.</p>
+        <p>I am experienced in web development especially using a Laravel Framework to provide a robust synopsis for high level overviews. I spend most of my free time to play pc games, watching movies and outdoor activities like riding a motorcycle.</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -123,6 +219,10 @@
           <div class="col-lg-8 content">
             <h2>Web Developer</h2>
             <br>
+            <!-- <p class="fst-italic py-3">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua.
+            </p> -->
             <div class="row">
               <div class="col-lg-6">
                 <ul>
@@ -141,6 +241,10 @@
                 </ul>
               </div>
             </div>
+            <!-- <p class="py-3">
+              Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis.
+              Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia repellendus itaque neque.
+            </p> -->
           </div>
         </div>
 
@@ -163,24 +267,26 @@
 
           <div class="col-lg-6">
 
+
             <div class="progress">
-              <span class="skill"><span>HTML</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+                <span class="skill"><span>HTML</span> <i class="val">75%</i></span>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            <!-- End Skills Item -->
 
             <div class="progress">
               <span class="skill"><span>CSS</span> <i class="val">50%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
               <span class="skill"><span>JavaScript</span> <i class="val">60%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
@@ -189,16 +295,16 @@
           <div class="col-lg-6">
 
             <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">80%</i></span>
+              <span class="skill"><span>PHP</span> <i class="val">75%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width:75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
             <div class="progress">
               <span class="skill"><span>Laravel Framework</span> <i class="val">50%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div>
             <!-- End Skills Item -->
@@ -206,7 +312,7 @@
             <div class="progress">
               <span class="skill"><span>Photoshop</span> <i class="val">50%</i></span>
               <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
               </div>
             </div><!-- End Skills Item -->
 
@@ -216,7 +322,8 @@
 
       </div>
 
-    </section><!-- /Skills Section -->
+    </section>
+    <!-- /Skills Section -->
 
     <!-- Resume Section -->
     <section id="resume" class="resume section">
@@ -296,8 +403,9 @@
               <p><em>Glimmertech</em></p>
               <h5>Jan 2018 - Sep 2018</h5>
               <ul>
-                <li></li>
-                <li></li>
+                <li>Analyze satellite or aerial images to gather information.</li>
+                <li>Use specialized software to enhance and evaluate imagery.</li>
+                <li>Ensure accuracy and quality of imagery data.</li>
               </ul>
             </div>
             <div class="resume-item">
@@ -305,8 +413,10 @@
               <p><em>Corden Agro Industries, Inc.</em></p>
               <h5>Jun 2017 - Dec 2017</h5>
               <ul>
-                <li></li>
-                <li></li>
+                <li>Enter information about daily manufacturing outputs and processes.</li>
+                <li>Update and maintain data records.</li>
+                <li>Ensure all entered data is correct and matches physical production records.</li>
+                <li>Work closely with factory staff to gather accurate data and address any discrepancies.</li>
               </ul>
             </div>
             <div class="resume-item">
@@ -314,18 +424,18 @@
               <p><em>National Bureau of Investigation</em></p>
               <h5>Nov 2016 - Mar 2017</h5>
               <ul>
-                <li></li>
-                <li></li>
+                <li>Data Entry.</li>
+                <li>Customer Service.</li>
               </ul>
             </div>
             <div class="resume-item">
               <h4>Web Developer/Programmer</h4>
               <p><em>Research / Thesis</em></p>
               <h5>November 2016 - March 2017</h5>
-              <ul>
+              <!-- <ul>
                 <li></li>
                 <li></li>
-              </ul>
+              </ul> -->
             </div>
           </div>
 
@@ -352,6 +462,35 @@
               </ul>
             </div>
           </div>
+
+          <!-- <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>Senior graphic design specialist</h4>
+              <h5>2019 - Present</h5>
+              <p><em>Experion, New York, NY </em></p>
+              <ul>
+                <li>Lead in the design, development, and implementation of the graphic, layout, and production communication materials</li>
+                <li>Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project. </li>
+                <li>Supervise the assessment of all graphic materials in order to ensure quality and accuracy of the design</li>
+                <li>Oversee the efficient use of production project budgets ranging from $2,000 - $25,000</li>
+              </ul>
+            </div>
+
+            <div class="resume-item">
+              <h4>Graphic design specialist</h4>
+              <h5>2017 - 2018</h5>
+              <p><em>Stepping Stone Advertising, New York, NY</em></p>
+              <ul>
+                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).</li>
+                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
+                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
+                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
+              </ul>
+            </div> -->
+
+          </div>
+
         </div>
 
       </div>
@@ -371,7 +510,7 @@
 
         <div class="row gy-4">
 
-          <div class="col-lg-5">
+          <div class="col-lg-12">
 
             <div class="info-wrap">
               <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
@@ -401,28 +540,40 @@
               <iframe src="https://maps.google.com/maps?q=iloilo%20city&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
+
+
         </div>
 
       </div>
 
-    </section><!-- /Contact Section -->
+    </section>
+    <!-- /Contact Section -->
 
   </main>
 
   <footer id="footer" class="footer position-relative light-background">
 
-    <div class="container">
-      <div class="copyright text-center ">
-        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
-      </div>
-      <div class="credits">
+    <script>
+      if (localStorage.pageVisits) {
+        localStorage.pageVisits = Number(localStorage.pageVisits) + 1;
+      } else {
+        localStorage.pageVisits = 1;
+      }
+      console.log("This page has been visited " + localStorage.pageVisits + " times.");
+    </script>
+
+    <!-- <div class="container"> -->
+      <!-- <div class="copyright text-center "> -->
+        <!-- <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p> -->
+      <!-- </div> -->
+      <!-- <div class="credits"> -->
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-      </div>
-    </div>
+      <!-- </div> -->
+    <!-- </div> -->
 
   </footer>
 
@@ -434,7 +585,7 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typedjs/typed.umd.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
   <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
 
   <!-- Main JS File -->
