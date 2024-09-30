@@ -238,7 +238,7 @@ gtag('config', 'G-H28DTGD5BF');
 
 function downloadPDF() {
   const link = document.createElement('a');
-  link.href = 'assets/pdf/ArjohnJudeAlagaoResume.pdf'; // Replace with the actual path to your PDF file
+  link.href = 'https://alas4370.github.io/AJA.github.io/assets/pdf/ArjohnJudeAlagaoResume.pdf'; // Replace with the actual path to your PDF file
   link.download = 'ArjohnJudeAlagaoResume.pdf'; // Replace with the desired file name for download
   link.click();
 }
