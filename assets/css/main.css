@@ -1279,59 +1279,57 @@ section,
   body {
     width: 1200px;
     margin: auto;
-    zoom: 1.5; /* Adjust this value to scale down as necessary */
+    zoom: 0.85; 
   }
   
-  /* Ensure that sections are displayed properly */
   section {
     width: 100%;
-    page-break-inside: avoid; /* Page breaks in the middle of sections */
+    page-break-inside: avoid; 
   }
   #resume {
     page-break-inside: auto;
   }
 
-  /* Optional: Remove or adjust backgrounds to save ink */
   body * {
     background: none !important; 
-    color: #000 !important; /* Ensure text is black for print readability */
+    color: #000 !important;
   }
 
-  /* Adjust image sizes for print */
   img {
     max-width: 100%;
     height: auto;
   }
   
-  /* Hide non-relevant sections */
   #home, #contact {
     display: none;
   }
+
   #about .section-title h2{
     display: none;
   }
+
   #resume .section-title h2{
     display: none;
   }
+
   .scroll-top i {
     display: none;
   }
+  
   .header-toggle {
     display: none !important;
   }
 
-  /* Style headings for better print appearance */
   h2, h3, h4 {
     font-size: 20px;
     font-weight: bold;
   }
 
-  /* Optional: Adjust margins for printing */
   .container {
-    margin: 10px 0;
+    position: relative;
+    z-index: 3;
   }
-
-  /* Ensure no unnecessary elements are printed (like hover effects) */
+  
   a {
     text-decoration: none;
     color: #000;
@@ -1339,21 +1337,19 @@ section,
 
   .progress-bar-wrap {
     width: 100%;
-    background-color: #f1f1f1; /* Optional: set a background color for visibility */
+    background-color: #f1f1f1; 
   }
 
   .progress-bar {
-    background-color: #007bff; /* Set the bar color */
-    height: 1rem; /* Ensure the height is maintained */
+    background-color: #007bff; 
+    height: 1rem; 
   }
 
-  /* Remove any animation that may prevent progress bar from showing in print */
   .progress-bar {
-    transition: none; /* Disable transitions/animations */
+    transition: none; 
   }
 
-  /* Ensure the progress bar width is maintained in print */
   .progress-bar[role="progressbar"] {
-    width: auto; /* Ensure auto width is calculated */
+    width: auto; 
   }
 }
