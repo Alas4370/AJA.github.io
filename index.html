@@ -26,99 +26,12 @@
   
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-H28DTGD5BF"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-H28DTGD5BF');
-  </script>
-
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
   <!-- Typed.js   -->
   <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script>
-    var options = {
-      stringsElement: '#typed-element',
-      typeSpeed: 50, // Speed of typing
-      backSpeed: 50, // Speed of deleting
-      backDelay: 700, // Delay before starting to delete
-      startDelay: 500, // Delay before starting to type
-      loop: true, // Whether to loop the animation
-      showCursor: true, // Whether to show the cursor
-    };
-
-    var typed = new Typed('#typed-element', options);
-  </script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const navLinks = document.querySelectorAll('#navmenu a');
-      const sections = document.querySelectorAll('section');
-
-      function setActiveLink() {
-        let index = sections.length;
-
-        while (--index && window.scrollY + 50 < sections[index].offsetTop) {}
-
-        navLinks.forEach((link) => link.classList.remove('active'));
-        navLinks[index].classList.add('active');
-      }
-
-      setActiveLink(); // Set active link on page load
-
-      window.addEventListener('scroll', setActiveLink);
-    });
-
-    navLinks.forEach(link => {
-      link.addEventListener('click', function () {
-        navLinks.forEach(link => link.classList.remove('active'));
-        this.classList.add('active');
-      });
-    });
-  </script>
-
-  <!-- Print -->
-  <script>
-    function printSections() {
-      // Get the content from the About, Skills, and Resume sections
-      window.print(); // Directly use the browser's print dialog
-    }
-  </script>
-
-  <!-- Download -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
-  <script>
-    document.getElementById('download-pdf').addEventListener('click', function() {
-      const sections = ['about', 'skills', 'resume'];
-      let elements = sections.map(id => document.getElementById(id));
-
-      // Check if elements exist
-      if (elements.some(el => el === null)) {
-        console.error('One or more sections not found');
-        return;
-      }
-
-      let pdfContent = document.createElement('div');
-      
-      elements.forEach(el => {
-        if (el) {
-          pdfContent.appendChild(el.cloneNode(true));
-        }
-      });
-
-      // Use html2pdf to generate the PDF
-      html2pdf().from(pdfContent).save('resume.pdf').then(() => {
-        console.log('PDF downloaded successfully');
-      }).catch(error => {
-        console.error('Error generating PDF:', error);
-      });
-    });
-  </script>
-
 
   <!-- =======================================================
   * Template Name: iPortfolio
@@ -180,7 +93,7 @@
 
 
     <!-- For future update add button to print or download a pdf file of my portfolio -->
-    <!-- <button onclick="printSections()" class="btn btn-outline-light">Print</button> -->
+    <button onclick="printSections()" class="btn btn-outline-light">Print</button>
     <!-- <button id="download-pdf" class="btn btn-outline-light">Download PDF</button> -->
 
 
@@ -254,12 +167,9 @@
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row skills-content skills-animation">
-
           <div class="col-lg-6">
-
-
+            
             <div class="progress">
                 <span class="skill"><span>HTML</span> <i class="val">75%</i></span>
                 <div class="progress-bar-wrap">
@@ -529,18 +439,18 @@
       console.log("This page has been visited " + localStorage.pageVisits + " times.");
     </script>
 
-    <!-- <div class="container"> -->
-      <!-- <div class="copyright text-center "> -->
-        <!-- <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p> -->
-      <!-- </div> -->
-      <!-- <div class="credits"> -->
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> -->
-      <!-- </div> -->
-    <!-- </div> -->
+    <!-- <div class="container">
+      <div class="copyright text-center ">
+        <p>© <span>Copyright</span> <strong class="px-1 sitename">iPortfolio</strong> <span>All Rights Reserved</span></p>
+      </div>
+      <div class="credits">
+        All the links in the footer should remain intact.
+        You can delete the links only if you've purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: [buy-url]
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div> -->
 
   </footer>
 
@@ -552,8 +462,6 @@
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
