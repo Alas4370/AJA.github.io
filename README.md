@@ -1,11 +1,13 @@
 # AJA.github.io
 
 📋 Features
+
     About Me: Learn about my professional background and interests.
     Skills: A detailed list of the technical skills I have acquired.
     Contact: Get in touch with me through the provided contact form or social media links.
 
 💻 Technologies Used
+
     This portfolio was built using:
 
     HTML
@@ -14,6 +16,7 @@
     Bootstrap (if applicable)
 
 NOTE : 
+
 📄 Template Source and Copyright
     The template used for this portfolio is sourced from a publicly available design, and it is referenced directly in the head tag of the index.html file. I do not claim ownership or copyright over the original template.
 
