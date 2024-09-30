@@ -18,6 +18,7 @@
 NOTE : 
 
 📄 Template Source and Copyright
+
     The template used for this portfolio is sourced from a publicly available design, and it is referenced directly in the head tag of the index.html file. I do not claim ownership or copyright over the original template.
 
     If you would like to view the template source, it is linked within the index.html file under the <head> section, where the necessary styles and scripts are included.
