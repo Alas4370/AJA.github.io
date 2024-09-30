@@ -228,15 +228,17 @@
 
 })();
 
-
-/** for printing */
-function printSections() {
-  window.print();
-} 
-
 /* gtag analytics */
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 
 gtag('config', 'G-H28DTGD5BF');
+
+
+function downloadPDF() {
+  const link = document.createElement('a');
+  link.href = 'assets/pdf/ArjohnJudeAlagaoResume.pdf'; // Replace with the actual path to your PDF file
+  link.download = 'ArjohnJudeAlagaoResume.pdf'; // Replace with the desired file name for download
+  link.click();
+}
